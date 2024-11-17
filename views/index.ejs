@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dados da API</title>
+
+  <link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Dados Recebidos da API</h1>
+    
+    <div class="row">
+      <% if (dados.length > 0) { %>
+        <% dados.forEach(item => { %>
+          <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+              <img src="<%= item.api_featured_image %>" class="card-img-top" alt="<%= item.name %>">
+              <div class="card-body">
+                <h5 class="card-title"><%= item.name %></h5>
+                <p class="card-text">
+                  <%= item.description ? item.description.replace(/<\/?[^>]+(>|$)/g, "") : "No description available." %>
+                </p>
+                <p><strong>Brand:</strong> <%= item.brand %></p>
+                <p><strong>Price:</strong> <%= item.price_sign %><%= item.price %> <%= item.currency %></p>
+              </div>
+              <!-- <div class="card-footer text-muted">
+                <small>ID: <%= item.id %></small>
+              </div> -->
+              <div class="card-body">
+                <label for="colorSelector_<%= item.id %>"><strong>Select Color:</strong></label>
+                <select id="colorSelector_<%= item.id %>" class="form-select">
+                  <% item.product_colors.forEach(color => { %>
+                    <option value="<%= color.hex_value %>" style="background-color: <%= color.hex_value %>;">
+                      <span style="background-color: <%= color.hex_value %>; color: white; padding: 2px 6px; border-radius: 50%;">&#9679;</span>
+                      <%= color.colour_name %>
+                    </option>
+                  <% }) %>
+                </select>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <div class="col-12">
+          <p class="text-center text-muted">Nenhum dado encontrado.</p>
+        </div>
+      <% } %>
+    </div>            
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

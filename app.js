@@ -31,6 +31,16 @@ app.get('/', async (req, res) => {
 //   }
 // });
 
+
+// //UITLIZAR ESSE CODIGO NA "INDEX.EJS" NO COLAR EU QUE EU MARQUEI CASO QUEIRA VER FUNCIONANDO A PARTE DE "CARREGAR MAIS":
+//     <div class="container text-center">
+//       <form action="/" method="get">
+//         <input type="hidden" name="limit" value="<%= limit + 10 %>">
+//         <button type="submit" class="btn btn-primary">Carregar mais</button>
+//       </form>
+//     </div>
+            
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });

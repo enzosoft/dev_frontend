@@ -14,7 +14,6 @@
 <body class="bg-light">
   <div class="container mt-5">
     <h1 class="text-center mb-4">Dados Recebidos da API</h1>
-    
     <div class="row">
       <% if (dados.length > 0) { %>
         <% dados.forEach(item => { %>
@@ -29,9 +28,9 @@
                 <p><strong>Brand:</strong> <%= item.brand %></p>
                 <p><strong>Price:</strong> <%= item.price_sign %><%= item.price %> <%= item.currency %></p>
               </div>
-              <!-- <div class="card-footer text-muted">
+              <div class="card-footer text-muted">
                 <small>ID: <%= item.id %></small>
-              </div> -->
+              </div>
               <div class="card-body">
                 <label for="colorSelector_<%= item.id %>"><strong>Select Color:</strong></label>
                 <select id="colorSelector_<%= item.id %>" class="form-select">
@@ -51,10 +50,15 @@
           <p class="text-center text-muted">Nenhum dado encontrado.</p>
         </div>
       <% } %>
-    </div>            
+    </div>   
+    <div class="container text-center">
+      <form action="/" method="get">
+        <input type="hidden" name="limit" value="<%= limit + 10 %>">
+        <button type="submit" class="btn btn-primary">Carregar mais</button>
+      </form>
+    </div>
+            
   </div>
-
-
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
